@@ -1,6 +1,5 @@
 bin/
-src/test.cpp
+a.out
 .clang-format
 .clang-tidy
-a.out
 database.txt
