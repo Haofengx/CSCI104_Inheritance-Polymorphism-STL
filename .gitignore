@@ -2,4 +2,3 @@ bin/
 a.out
 .clang-format
 .clang-tidy
-database.txt
