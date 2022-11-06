@@ -33,7 +33,6 @@ int main(int argc, char* argv[])
     MyDataStore ds;
 
 
-
     // Instantiate the individual section and product parsers we want
     ProductSectionParser* productSectionParser = new ProductSectionParser;
     productSectionParser->addProductParser(new ProductBookParser);
@@ -113,13 +112,13 @@ int main(int argc, char* argv[])
                         cout << "Invalid request" << endl;
                     }
                     else if(ss >> search_hit_number){
-											if(hits.size() < (unsigned int) search_hit_number){
-												cout << "Invalid request" << endl;
-											}
-											else{
-												Product* add_product = hits[search_hit_number-1];
-                        ds.addCart(add_product, user);
-											}
+                        if(hits.size() < (unsigned int) search_hit_number){
+                            cout << "Invalid request" << endl;
+                        }
+                        else{
+                            Product* add_product = hits[search_hit_number-1];
+                            ds.addCart(add_product, user);
+                        }
                     }
                 }
                 else{
@@ -132,8 +131,9 @@ int main(int argc, char* argv[])
                     username = convToLower(username);
                     User* user = ds.getUser(username);
                     if(user != NULL){
-                        vector<Product*> cart_tmp = ds.viewCart(user);
-                        displayProducts(cart_tmp);
+											vector<Product*> cart_tmp = ds.viewCart(user);
+											displayProducts(cart_tmp);
+                      //ds.printCart(cart_tmp);
                     }
                     else{
                         cout << "Invalid username" << endl;

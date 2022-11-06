@@ -26,6 +26,7 @@ public:
 	void addCart(Product* product, User* user);
 	// Print the products in username's cart (case insensitive) at the current time.
 	std::vector<Product*> viewCart(User*);
+	void printCart(std::vector<Product*>);
 	// User can buy product in the cart
 	void buyCart(User*);
 	// Get user

@@ -58,7 +58,7 @@ void MyDataStore::dump(std::ostream& ofile){
 	for(std::vector<Product*>::iterator it = product_vector.begin(); it != product_vector.end(); ++it){
 		(*it)->dump(ofile);
 	}
-	ofile << "</prodcuts>" << std::endl;
+	ofile << "</products>" << std::endl;
 	ofile << "<users>" << std::endl;
 	for(std::vector<User*>::iterator it = user_.begin(); it != user_.end(); ++it){
 		(*it)->dump(ofile);
@@ -89,6 +89,15 @@ std::vector<Product*> MyDataStore::viewCart(User* user){
 	}
 	return cart;
 }
+
+void MyDataStore::printCart(std::vector<Product*> cart){
+	std::vector<Product*>::iterator it;
+	for(it = cart.begin(); it != cart.end(); ++it){
+		std::cout << (*it)->displayString() << std::endl;
+		std::cout << std::endl;
+	}
+}
+
 
 // User can buy product in the cart
 void MyDataStore::buyCart(User* user){
