@@ -132,8 +132,8 @@ int main(int argc, char* argv[])
                     User* user = ds.getUser(username);
                     if(user != NULL){
 											vector<Product*> cart_tmp = ds.viewCart(user);
-											displayProducts(cart_tmp);
-                      //ds.printCart(cart_tmp);
+											//displayProducts(cart_tmp);
+                      ds.printCart(cart_tmp);
                     }
                     else{
                         cout << "Invalid username" << endl;

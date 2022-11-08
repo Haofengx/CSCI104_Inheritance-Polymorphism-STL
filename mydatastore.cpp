@@ -3,10 +3,12 @@
 MyDataStore::MyDataStore() { }
 
 MyDataStore::~MyDataStore() {
-	product_.clear();
-	cart_.clear();
-	product_vector.clear();
-	user_.clear();
+	for(unsigned int i = 0; i < product_vector.size(); i++){
+		delete product_vector[i];
+	}
+	for(unsigned int i = 0; i < user_.size(); i++){
+		delete user_[i];
+	}
 }
 
 // adding products
@@ -77,7 +79,7 @@ void MyDataStore::addCart(Product* product, User* user){
 		prod.push_back(product);
 		cart_[user] = prod;
 	}
-	std::cout << user->getName() << " add: " << product->getName() << std::endl;
+	//std::cout << user->getName() << " add: " << product->getName() << std::endl;
 }
 
 // Print the products in username's cart (case insensitive) at the current time.
@@ -92,7 +94,9 @@ std::vector<Product*> MyDataStore::viewCart(User* user){
 
 void MyDataStore::printCart(std::vector<Product*> cart){
 	std::vector<Product*>::iterator it;
+	int i = 1;
 	for(it = cart.begin(); it != cart.end(); ++it){
+		std::cout << "Item " << i++ << std::endl;
 		std::cout << (*it)->displayString() << std::endl;
 		std::cout << std::endl;
 	}
